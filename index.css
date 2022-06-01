@@ -1,0 +1,57 @@
+.header {
+    text-align: center;
+}
+
+.btns {
+    display: flex;
+    flex: 1;
+    min-height: 100vh;
+    align-items: center;
+    justify-content: center;
+  }
+
+.btn {
+    border: .4rem solid black;
+    border-radius: .5rem;
+    margin: 1rem;
+    font-size: 1.5rem;
+    padding: 1rem .5rem;
+    transition: all .07s ease;
+    width: 15rem;
+    height: 15rem;
+    text-align: center;
+    color: white;
+    background: rgba(0,0,0,0.4);
+    text-shadow: 0 0 .5rem black;
+}
+
+.btn:hover {
+    transform: scale(1.1);
+    border-color: #ffc600;
+    box-shadow: 0 0 1rem #ffc600;
+  }
+
+.btn:active {  
+    transform: scale(0.9);
+    border-color: #ff7b00;
+    box-shadow: 0 0 1rem #ff7b00;
+}
+
+#rock {
+    background-image: url("./rock.png");
+    background-position: center;
+    background-size: cover;
+}
+
+#paper {
+    background-image: url("./paper.png");
+    background-position: center;
+    background-size: cover;
+}
+
+#scissors {
+    background-image: url("./scissor.png");
+    background-position: center;
+    background-size: cover;
+}
+
