@@ -1,3 +1,7 @@
+let player = 0;
+let computer = 0;
+let draw = 0;
+
 function computerPlay(){
 const options = ['Rock', 'Paper', 'Scissors'];
 let select = Math.floor(Math.random() * 3);
@@ -78,19 +82,19 @@ function playRound(playerSelection, computerSelection) {
       console.log(`Player Score: ${player} and Computer Score: ${comp}`);
    }
    */
-  
+
   const rock = document.querySelector('#rock');
   const paper = document.querySelector('#paper');
   const scissors = document.querySelector('#scissors');
 
   rock.addEventListener("click", function(e){
-    console.log(rock);
+    console.log(playRound("rock", computerPlay()));
   });
   paper.addEventListener("click", function(e){
-    console.log(paper);
+    console.log(playRound("paper", computerPlay()));
   });
   scissors.addEventListener("click", function(e){
-    console.log(scissors);
+    console.log(playRound("scissors", computerPlay()));
   });
 
 
