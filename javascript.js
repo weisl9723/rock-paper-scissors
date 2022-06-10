@@ -73,6 +73,19 @@ function playRound(playerSelection, computerSelection) {
      //saving the return value in a string
     let computerSelection = computerPlay();
 
+    if (playRound(playerSelection, computerSelection) === "You Win!"){
+      player++;
+    }
+    else if(playRound(playerSelection, computerSelection) === "You Lose!"){
+      computer++;
+    }
+    else {
+      draw++;
+    }
+
+    //updates the score
+    scoreboard.textContent = `Player: ${player} | Computer: ${computer} | Draw: ${draw}`;
+    
     //stops function from running if game is over
     if (player >= 5){
       result.textContent = "WINNER!";
@@ -90,19 +103,6 @@ function playRound(playerSelection, computerSelection) {
       reset.style.visibility = "visible";
       return;
     }
-
-    if (playRound(playerSelection, computerSelection) === "You Win!"){
-      player++;
-    }
-    else if(playRound(playerSelection, computerSelection) === "You Lose!"){
-      computer++;
-    }
-    else {
-      draw++;
-    }
-
-    //updates the score
-    scoreboard.textContent = `Player: ${player} | Computer: ${computer} | Draw: ${draw}`;
    }
 
 const rock = document.querySelector('#rock');
