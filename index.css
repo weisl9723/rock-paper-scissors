@@ -1,3 +1,7 @@
+body {
+    font-family: 'Courier New', Courier, monospace;
+    background-color: lightgray;
+}
 .header {
     text-align: center;
 }
@@ -7,6 +11,10 @@
     font-size: 32px;
 }
 
+.result {
+    text-align: center;
+    font-size: 32px;
+}
 .btns {
     display: flex;
     flex: 1;
@@ -14,6 +22,34 @@
     align-items: center;
     justify-content: center;
   }
+
+.reset-button {
+    display: flex;
+    justify-content: center;
+    border: .4rem solid black;
+    border-radius: .5rem;
+    margin: 1rem;
+    font-size: 1.5rem;
+    padding: 1rem .5rem;
+    transition: all .07s ease;
+    text-align: center;
+    color: white;
+    background: rgba(0,0,0,0.4);
+    text-shadow: 0 0 .5rem black;
+    visibility: hidden;
+}
+
+.reset-button:hover {
+    transform: scale(1.1);
+    border-color: #ffc600;
+    box-shadow: 0 0 1rem #ffc600;
+  }
+
+.reset-button:active {  
+    transform: scale(0.9);
+    border-color: #ff7b00;
+    box-shadow: 0 0 1rem #ff7b00;
+}
 
 .btn {
     border: .4rem solid black;

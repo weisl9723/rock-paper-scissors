@@ -1,25 +1,30 @@
+//score counters
 let player = 0;
 let computer = 0;
 let draw = 0;
 
+//computer randomly selects choice
 function computerPlay(){
 const options = ['Rock', 'Paper', 'Scissors'];
 let select = Math.floor(Math.random() * 3);
 
 return options[select];
-
 }
 
+//the conditions that determine who wins
 function playRound(playerSelection, computerSelection) {
     if (playerSelection == "rock"){
         switch(computerSelection) {
             case "Rock":
+              result.textContent = "It's a draw!";
               return "DRAW!";
               break;
             case "Paper":
+              result.textContent = "Paper beats Rock!";
               return "You Lose!";
               break;
             case "Scissors":
+              result.textContent = "Rock beats Scissors!";
               return "You Win!";
               break;
             default:
@@ -29,12 +34,15 @@ function playRound(playerSelection, computerSelection) {
     else if(playerSelection == "paper"){
         switch(computerSelection) {
             case "Rock":
+              result.textContent = "Paper beats Rock!";
               return "You Win!";
               break;
             case "Paper":
+              result.textContent = "It's a draw!";
               return "DRAW!";
               break;
             case "Scissors":
+              result.textContent = "Scissor beats Paper!";
               return "You Lose!";
               break;
             default:
@@ -44,12 +52,15 @@ function playRound(playerSelection, computerSelection) {
     else if (playerSelection == "scissors"){
         switch(computerSelection) {
             case "Rock":
+              result.textContent = "Rock beats Scissors!";
               return "You Win!";
               break;
             case "Paper":
+              result.textContent = "Scissor beats Paper!";
               return "You Lose!";
               break;
             case "Scissors":
+              result.textContent = "It's a draw!";
               return "DRAW!";
               break;
             default:
@@ -58,44 +69,70 @@ function playRound(playerSelection, computerSelection) {
     }
   }
 
-/*  function game(){
-    let player = 0;
-    let comp = 0;
+   function game(playerSelection){
+     //saving the return value in a string
+    let computerSelection = computerPlay();
 
-    for (let i = 0; i < 5; i++) {
-      let computerSelection = computerPlay();
-      let playerSelection = prompt(`"Round (${i+1}) Pick an option: 'Rock', 'Paper', or 'Scissors'"`).toLowerCase();
-      console.log(`Player chooses: ${playerSelection} Computer chooses: ${computerSelection}`);
+    //stops function from running if game is over
+    if (player >= 5){
+      result.textContent = "WINNER!";
+      rock.style.visibility = "hidden";
+      paper.style.visibility = "hidden";
+      scissors.style.visibility = "hidden";
+      reset.style.visibility = "visible";
+      return;
+    }
+    else if (computer >= 5){
+      result.textContent = "YOU LOSE!";
+      rock.style.visibility = "hidden";
+      paper.style.visibility = "hidden";
+      scissors.style.visibility = "hidden";
+      reset.style.visibility = "visible";
+      return;
+    }
 
-      if (playRound(playerSelection, computerSelection) === "You Win!"){
-        console.log("You Win!");
-        player++;
-      }
-      else if(playRound(playerSelection, computerSelection) === "You Lose!"){
-        console.log("You Lose!");
-        comp++;
-      }
-      else {
-        console.log("DRAW!");
-      }
+    if (playRound(playerSelection, computerSelection) === "You Win!"){
+      player++;
+    }
+    else if(playRound(playerSelection, computerSelection) === "You Lose!"){
+      computer++;
+    }
+    else {
+      draw++;
+    }
 
-      console.log(`Player Score: ${player} and Computer Score: ${comp}`);
+    //updates the score
+    scoreboard.textContent = `Player: ${player} | Computer: ${computer} | Draw: ${draw}`;
    }
-   */
 
-  const rock = document.querySelector('#rock');
-  const paper = document.querySelector('#paper');
-  const scissors = document.querySelector('#scissors');
+const rock = document.querySelector('#rock');
+const paper = document.querySelector('#paper');
+const scissors = document.querySelector('#scissors');
+const scoreboard = document.querySelector('.score p');
+const result = document.querySelector('.result');
+const reset = document.querySelector('.reset-button');
 
   rock.addEventListener("click", function(e){
-    console.log(playRound("rock", computerPlay()));
+    game("rock");
   });
   paper.addEventListener("click", function(e){
-    console.log(playRound("paper", computerPlay()));
+    game("paper");
   });
   scissors.addEventListener("click", function(e){
-    console.log(playRound("scissors", computerPlay()));
+    game("scissors");
   });
+  reset.addEventListener("click", function(e){
+    reset.style.visibility = "hidden";
+    player = 0;
+    computer = 0;
+    draw = 0;
+    scoreboard.textContent = `Player: ${player} | Computer: ${computer} | Draw: ${draw}`;
+    result.textContent = '';
+    rock.style.visibility = "visible";
+    paper.style.visibility = "visible";
+    scissors.style.visibility = "visible";
+  });
+
 
 
   //const computerSelection = computerPlay();
